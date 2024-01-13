@@ -1,0 +1,41 @@
+import base64
+
+# Fungsi untuk mengenkripsi menggunakan AES (Contoh, gunakan library kriptografi yang sesuai)
+def encrypt_aes(message, key):
+    # Implementasi enkripsi AES
+    # ...
+
+# Fungsi untuk mengonversi chiperteks menjadi sandi Morse
+def to_morse(ciphertext):
+    morse_code = {'A': '.-', 'B': '-...',
+                  'C': '-.-.', 'D': '-..', 'E': '.',
+                  'F': '..-.', 'G': '--.', 'H': '....',
+                  'I': '..', 'J': '.---', 'K': '-.-',
+                  'L': '.-..', 'M': '--', 'N': '-.',
+                  'O': '---', 'P': '.--.', 'Q': '--.-',
+                  'R': '.-.', 'S': '...', 'T': '-',
+                  'U': '..-', 'V': '...-', 'W': '.--',
+                  'X': '-..-', 'Y': '-.--', 'Z': '--..',
+                  '0': '-----', '1': '.----', '2': '..---',
+                  '3': '...--', '4': '....-', '5': '.....',
+                  '6': '-....', '7': '--...', '8': '---..',
+                  '9': '----.'}
+
+    morse_text = ' '.join([morse_code.get(char.upper(), char) for char in ciphertext])
+    return morse_text
+
+# Pesan teks asli
+plaintext = "Hello, World!"
+
+# Kunci enkripsi (Contoh, gunakan kunci yang aman di implementasi sebenarnya)
+encryption_key = "SecretKey123"
+
+# Langkah 1: Enkripsi menggunakan AES
+encrypted_message = encrypt_aes(plaintext, encryption_key)
+
+# Langkah 2: Mengonversi chiperteks menjadi sandi Morse
+morse_code_message = to_morse(base64.b64encode(encrypted_message.encode()).decode())
+
+print("Teks Asli: ", plaintext)
+print("Chiperteks: ", encrypted_message)
+print("Morse Code: ", morse_code_message)
